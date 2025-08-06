@@ -1,0 +1,1262 @@
+query CarSearchV3(
+  $context: ContextInput!,
+  $primaryCarSearchCriteria: PrimaryCarCriteriaInput!,
+  $secondaryCriteria: ShoppingSearchCriteriaInput!,
+  $shoppingContext: ShoppingContextInput
+) {
+  carSearchOrRecommendations(
+    context: $context
+    primaryCarSearchCriteria: $primaryCarSearchCriteria
+    secondaryCriteria: $secondaryCriteria
+    shoppingContext: $shoppingContext
+  ) {
+    carSearchResults {
+      shoppingContext {
+        multiItem {
+          id
+        }
+      }
+      carsShoppingContext {
+        searchId
+      }
+      multiItemAnchorPriceToken
+      multiItemPickUpDropOffMessage {
+        message {
+          __typename
+          ... on CarPhraseText {
+            text
+          }
+        }
+      }
+      multiItemPlayBackTitleBar {
+        primary {
+          __typename
+          ... on CarPhraseText {
+            text
+          }
+        }
+        secondary {
+          longMessage {
+            __typename
+            ... on CarPhraseText {
+              text
+            }
+          }
+          shortMessage {
+            __typename
+            ... on CarPhraseText {
+              text
+            }
+          }
+          accessibilityMessage {
+            __typename
+            ... on CarPhraseText {
+              text
+            }
+          }
+        }
+      }
+      listings {
+        __typename
+        ... on CarMessagingCard {
+          ...messagingCard
+        }
+        ... on CarOfferCard {
+          accessibilityString
+          offerBadges {
+            ...badge
+          }
+          vehicle {
+            image {
+              ...image
+            }
+            ecoFriendlyFuel {
+              ... on CarsRichText {
+                value
+                style
+                theme
+              }
+            }
+            category
+            categoryIcon {
+              ...icon
+            }
+            description
+            attributes {
+              icon {
+                ...icon
+              }
+              text
+            }
+            features {
+              ...feature
+            }
+            fuelInfo {
+              ...feature
+            }
+          }
+          tripLocations {
+            pickUpLocation {
+              ...carOfferVendorLocationInfo
+            }
+            dropOffLocation {
+              ...carOfferVendorLocationInfo
+            }
+          }
+          vendor {
+            image {
+              ...image
+            }
+          }
+          detailsContext {
+            carOfferToken
+            selectedAccessories
+            rewardPointsSelection
+            continuationContextualId
+          }
+          priceBadges {
+            ...badge
+          }
+          actionableConfidenceMessages {
+            ...carPhrase
+          }
+          review {
+            rating
+            superlative
+            totalCount
+            richRatingText {
+              ...detailsRichText
+            }
+          }
+          priceSummary {
+            ...offerPriceSummary
+          }
+          shortList {
+            favorited
+            saveUrl
+            removeUrl
+          }
+          action {
+            ...carAction
+          }
+          reserveButtonText
+          infositeURL {
+            relativePath
+          }
+          offerHeading
+          multiItemPriceToken
+          additionalBenefits {
+            ...carPhrase
+          }
+          cancellationAndPaymentMessages {
+            ...carPhrase
+          }
+          clubbedPriceOptions {
+            dialogTrigger {
+              ...carActionableItem
+            }
+            dialogContent {
+              title
+              vendor {
+                image {
+                  ...image
+                }
+              }
+              vehicleCategory
+              vehicleDescription
+              optionsSummary {
+                ...carPhrase
+              }
+              clubbedPrices {
+                heading {
+                  ...carPhrase
+                }
+                title {
+                  ...carPhrase
+                }
+                offerBadges {
+                  ...badge
+                }
+                priceBadges {
+                  ...badge
+                }
+                priceSummary {
+                  ...offerPriceSummary
+                }
+                paymentMessages {
+                  ...carPhrase
+                }
+                additionalPaymentMessages {
+                  ...carPhrase
+                }
+                cancellationMessages {
+                  ...carPhrase
+                }
+                additionalBenefits {
+                  ...carPhrase
+                }
+                loyaltyEarnMessages {
+                  ...carPhrase
+                }
+                reserveButtonAction {
+                  ...carAction
+                }
+                reserveButtonText
+                infositeURL {
+                  relativePath
+                }
+              }
+              commonAdditionalBenefits {
+                ...carPhrase
+              }
+              modalFooter
+            }
+          }
+          isFareComparisonTestEnabled
+          priceSummaryText
+          enhancedCleanlinessDialog {
+            images {
+              value
+            }
+            title
+            description
+            content {
+              title {
+                icon {
+                  ...icon
+                }
+                text
+              }
+              infos
+            }
+            carouselButtonAllyStrings
+          }
+          guaranteedAnalytics {
+            ...analytics
+          }
+          personalisedDeal {
+            ...carPhrase
+          }
+          tripsSaveItemWrapper {
+            tripsSaveItem {
+              initialChecked
+              itemId
+              source
+              attributes {
+                ...TripsSaveCarOfferAttributesFragment
+                ...TripsSaveStayAttributesFragment
+                ...TripsSaveActivityAttributesFragment
+                ...TripsSaveFlightSearchAttributesFragment
+              }
+              save {
+                ...TripsSaveItemPropertiesFragment
+              }
+              remove {
+                ...TripsSaveItemPropertiesFragment
+              }
+            }
+            variant
+          }
+          offerPositionClickAnalytics {
+            ...analytics
+          }
+        }
+      }
+      carRentalLocations {
+        routeType
+        pickUpLocation {
+          ...carSearchLocation
+        }
+        dropOffLocation {
+          ...carSearchLocation
+        }
+        searchAccessibility
+      }
+      changeRentalLocation {
+        link {
+          ... on CarActionableItem {
+            text
+          }
+        }
+        placeHolder {
+          ... on CarPhraseText {
+            text
+          }
+        }
+        primary {
+          ... on CarPhraseText {
+            text
+          }
+        }
+        secondary {
+          ... on CarPhraseText {
+            text
+          }
+        }
+      }
+      summary {
+        title
+        dynamicTitle {
+          ...carPhrase
+        }
+        pageTitle
+        includedFeeFooter {
+          title
+          description
+        }
+        carRecommendations {
+          ...carRecommendations
+        }
+      }
+      filterNoMatchMessage {
+        messagingCard {
+          ...messagingCard
+        }
+        allOffersTextSeparator
+      }
+      loadMoreAction {
+        action {
+          ...carAction
+        }
+        icon {
+          ...icon
+        }
+        searchPagination {
+          size
+          startingIndex
+        }
+        text
+      }
+      loyaltyInfo {
+        __typename
+        ... on CarPhraseText {
+          text
+        }
+        ... on CarActionableItem {
+          ...carActionableItem
+        }
+        ... on CarPhraseMark {
+          text
+          name
+          url {
+            value
+            relativePath
+          }
+          description
+        }
+      }
+      oneKeyInfo {
+        isOneKeyEnrolled
+      }
+      sortAndFilter {
+        title
+        close {
+          ...icon
+        }
+        appliedFilterCount
+        clearButtonTitle
+        sections {
+          title
+          fields {
+            __typename
+            primary
+            secondary
+            ...SingleSelectionFragment
+            ...MultiSelectionFragment
+          }
+        }
+      }
+      carAppliedSortAndFilters {
+        appliedSortAndFilters {
+          id
+          text
+          value
+          crossIcon {
+            ...icon
+          }
+          analytics {
+            ...clientSideAnalytics
+          }
+        }
+      }
+      shareFeedbackAction {
+        text
+        button {
+          ...carActionableItem
+        }
+      }
+      adsTargetingData {
+        uuid
+        siteId
+        pageName
+        origin
+        dest
+        locResolver
+        dateStart
+        dateEnd
+        adProvider
+      }
+      recommendedSortDisclaimer {
+        ...carPhrase
+      }
+      recommendedSortExplanation {
+        content {
+          ...carPhrase
+        }
+        feedback {
+          ...searchUserFeedback
+        }
+        closeAnalytics {
+          ...analytics
+        }
+      }
+      makeModelDisclaimer {
+        ...carPhrase
+      }
+      map {
+        title
+        text
+        dialogAccessibility
+        closeIcon {
+          ...icon
+        }
+        closeAction {
+          ...carAction
+        }
+        center {
+          ...coordinates
+        }
+        bounds {
+          northeast {
+            ...coordinates
+          }
+          southwest {
+            ...coordinates
+          }
+        }
+        zoomLevel
+        markers {
+          __typename
+          type
+          action {
+            ...carAction
+          }
+          hoverAction {
+            ...analytics
+          }
+          coordinates {
+            ...coordinates
+          }
+          ... on CarItemCardMapMarker {
+            itemCard {
+              ... on CarMapSearchLocationCard {
+                title
+                text
+              }
+              ... on CarMapPickupLocationCard {
+                vendorLocationId
+                placeId
+                vendorImage {
+                  ...image
+                }
+                vendorReview {
+                  rating
+                  superlative
+                  totalCount
+                  richRatingText {
+                    ...detailsRichText
+                  }
+                }
+                address
+                shortAddress
+                distance
+                superlative
+                priceSummary {
+                  lead {
+                    ...priceInfo
+                  }
+                  total {
+                    ...priceInfo
+                  }
+                  strikeThroughFirst
+                  loyaltyPointsOption {
+                    formattedPoints
+                    leadingCaption
+                    pointsFirst
+                  }
+                  accessibility
+                }
+                seeCarsButtonText
+                action {
+                  ...carAction
+                }
+                totalResultsByLocation
+                totalResultsByLocationFormatted
+              }
+            }
+          }
+        }
+        mapButton {
+          url {
+            value
+          }
+          text
+          action {
+            ...carAction
+          }
+        }
+        filterTitle
+        mapSearchThisAreaButton {
+          text
+          action {
+            ...carAction
+          }
+        }
+      }
+    }
+    carsErrorContent {
+      icon {
+        ...icon
+      }
+      heading
+      subText
+      analytics {
+        linkName
+        referrerId
+      }
+      errorEventName
+      locationAnalytics {
+        linkName
+        referrerId
+      }
+    }
+    carRecommendationContent {
+      ... on CarRecommendations {
+        ...carRecommendations
+      }
+    }
+  }
+}
+
+fragment messagingCard on CarMessagingCard {
+  title
+  cardTitle {
+    ...carPhrase
+  }
+  description
+  descriptions
+  cardDescriptions {
+    ...carPhrase
+  }
+  mark
+  image {
+    description
+    url
+  }
+  illustrationURL {
+    value
+  }
+  icon {
+    ...icon
+  }
+  links {
+    text
+    url {
+      value
+      relativePath
+    }
+    icon {
+      ...icon
+    }
+    action {
+      actionType
+      analytics {
+        linkName
+        referrerId
+      }
+    }
+  }
+  dialog {
+    title
+    buttonText
+    text
+    content {
+      header {
+        ...carPhrase
+      }
+      body {
+        title {
+          ...carPhrase
+        }
+        body {
+          ...carPhrase
+        }
+      }
+      footer {
+        ...carPhrase
+      }
+    }
+    type
+  }
+  carRecommendations {
+    ...carRecommendations
+  }
+  analytics {
+    ...analytics
+  }
+}
+
+fragment carPhrase on CarPhrase {
+  __typename
+  ... on CarPhraseText {
+    text
+  }
+  ... on CarPhrasePairText {
+    richText {
+      ...detailsRichText
+    }
+    richSubText {
+      ...detailsRichText
+    }
+  }
+  ... on CarPhraseIconText {
+    text
+    icon {
+      ...icon
+    }
+  }
+  ... on CarActionableItem {
+    ...carActionableItem
+  }
+  ... on CarDialogConfidenceMessage {
+    ...carDialogConfidenceMessage
+  }
+  ... on CarsRichText {
+    value
+    style
+    theme
+  }
+  ... on CarPhraseMark {
+    text
+    name
+    url {
+      value
+      relativePath
+    }
+    description
+  }
+  ... on CarOfferBadge {
+    icon {
+      ...icon
+    }
+    mark {
+      id
+      url {
+        value
+      }
+    }
+    text
+    badgeTheme: theme
+  }
+}
+
+fragment detailsRichText on CarsRichText {
+  value
+  theme
+  style
+}
+
+fragment icon on Icon {
+  description
+  id
+  withBackground
+  size
+}
+
+fragment carActionableItem on CarActionableItem {
+  url {
+    value
+    relativePath
+  }
+  action {
+    ...carAction
+  }
+  text
+  icon {
+    ...icon
+  }
+}
+
+fragment carAction on CarAction {
+  actionType
+  accessibility
+  analytics {
+    ...analytics
+  }
+}
+
+fragment analytics on CarAnalytics {
+  linkName
+  referrerId
+}
+
+fragment carDialogConfidenceMessage on CarDialogConfidenceMessage {
+  text
+  icon {
+    ...icon
+  }
+  openDialogAction {
+    ...carAction
+  }
+  dialogContent {
+    title
+    text
+    buttonText
+    content {
+      header {
+        ...dialogContentCarPhrase
+      }
+      body {
+        __typename
+        title {
+          ...dialogContentCarPhrase
+        }
+        body {
+          ...dialogContentCarPhrase
+        }
+      }
+      footer {
+        ...dialogContentCarPhrase
+      }
+    }
+    type
+  }
+  iconMobileRender
+}
+
+fragment dialogContentCarPhrase on CarPhrase {
+  __typename
+  ... on CarPhraseText {
+    text
+  }
+  ... on CarPhraseIconText {
+    text
+    icon {
+      ...icon
+    }
+  }
+  ... on CarsRichText {
+    value
+    style
+  }
+  ... on CarActionableItem {
+    ...carActionableItem
+  }
+}
+
+fragment carRecommendations on CarRecommendations {
+  __typename
+  heading
+  analytics {
+    linkName
+    referrerId
+  }
+  carRecommendationsCards {
+    ...carRecommendationCard
+  }
+}
+
+fragment carRecommendationCard on CarRecommendationCard {
+  __typename
+  icon {
+    ...icon
+  }
+  action {
+    ...carAction
+  }
+  ... on DateTimeRecommendationCard {
+    icon {
+      ...icon
+    }
+    text {
+      ...detailsRichText
+    }
+    subText {
+      ...carPhrase
+    }
+    action {
+      ...carAction
+    }
+  }
+  ... on LocationRecommendationCard {
+    icon {
+      ...icon
+    }
+    location {
+      ...detailsRichText
+    }
+    city {
+      ...carPhrase
+    }
+    distanceText {
+      ...carPhrase
+    }
+    action {
+      ...carAction
+    }
+    pickUpLocation {
+      ...carSearchLocation
+    }
+  }
+  ... on PartnerRecommendationCard {
+    icon {
+      ...icon
+    }
+    action {
+      ...carAction
+    }
+    analytics {
+      ...analytics
+    }
+    image {
+      ...image
+    }
+    title {
+      ...carPhrase
+    }
+    subText {
+      ...carPhrase
+    }
+    button {
+      ...carActionableItem
+    }
+    dialog {
+      ... on PartnerRecommendationDialog {
+        title {
+          ...carPhrase
+        }
+        subTitle {
+          ...carPhrase
+        }
+        text {
+          ...carPhrase
+        }
+        button {
+          ...carActionableItem
+        }
+        closeDialog {
+          ...carAction
+        }
+        content {
+          ... on PartnerRecommendationDialogContent {
+            title {
+              ...carPhrase
+            }
+            body {
+              ...carPhrase
+            }
+            confidenceMessage {
+              ...carPhrase
+            }
+          }
+        }
+        image {
+          ...image
+        }
+      }
+    }
+  }
+  ... on AlternateRecommendationCard {
+    icon {
+      ...icon
+    }
+    action {
+      ...carAction
+    }
+    analytics {
+      ...analytics
+    }
+    image {
+      ...image
+    }
+    title {
+      ...carPhrase
+    }
+    subText {
+      ...carPhrase
+    }
+    button {
+      ...carActionableItem
+    }
+  }
+  ... on LimitedResultMessageOnRecommendationCard {
+    icon {
+      ...icon
+    }
+    action {
+      ...carAction
+    }
+    recommendationDialog {
+      title
+      buttonText
+      text
+      content {
+        header {
+          ...carPhrase
+        }
+        body {
+          title {
+            ...carPhrase
+          }
+          body {
+            ...carPhrase
+          }
+        }
+        footer {
+          ...carPhrase
+        }
+      }
+    }
+  }
+}
+
+fragment carSearchLocation on CarSearchLocation {
+  shortName
+  fullName
+  regionId
+}
+
+fragment image on Image {
+  description
+  url
+}
+
+fragment badge on CarOfferBadge {
+  icon {
+    ...icon
+  }
+  text
+  theme
+  mark {
+    id
+    url {
+      value
+    }
+  }
+}
+
+fragment feature on VehicleFeature {
+  icon {
+    ...icon
+  }
+  text
+  info {
+    vehicleFeatureDialog {
+      title
+      text
+      buttonText
+    }
+    carActionableItem {
+      ...carActionableItem
+    }
+  }
+}
+
+fragment carOfferVendorLocationInfo on CarOfferVendorLocationInfo {
+  locationId
+  placeId
+  icon {
+    ...icon
+  }
+  text
+  locationSubInfo
+}
+
+fragment offerPriceSummary on CarPriceSummary {
+  discountBadge {
+    ...badge
+  }
+  lead {
+    ...priceInfo
+  }
+  total {
+    ...priceInfo
+  }
+  strikeThroughFirst
+  loyaltyPointsOption {
+    formattedPoints
+    leadingCaption
+    pointsFirst
+  }
+  accessibility
+  reference {
+    additionalInfo
+    price {
+      ...money
+    }
+    qualifier
+  }
+  paymentInfo {
+    icon {
+      ...icon
+    }
+    text
+    additionalPaymentInfo
+  }
+  priceAdditionalInfo
+}
+
+fragment priceInfo on CarPriceInfo {
+  price {
+    ...money
+  }
+  accessibility
+  qualifier
+  formattedValue
+}
+
+fragment money on Money {
+  amount
+  formatted
+  currencyInfo {
+    code
+    name
+    symbol
+  }
+}
+
+fragment TripsSaveCarOfferAttributesFragment on TripsSaveCarOfferAttributes {
+  __typename
+  categoryCode
+  fuelAcCode
+  offerToken
+  searchCriteria {
+    dropOffDateTime {
+      ...DateTimeFragment
+    }
+    dropOffLocation {
+      ...CarRentalLocationFragment
+    }
+    pickUpDateTime {
+      ...DateTimeFragment
+    }
+    pickUpLocation {
+      ...CarRentalLocationFragment
+    }
+  }
+  transmissionDriveCode
+  typeCode
+  vendorCode
+}
+
+fragment DateTimeFragment on DateTime {
+  day
+  hour
+  minute
+  month
+  second
+  year
+}
+
+fragment CarRentalLocationFragment on CarRentalLocation {
+  airportCode
+  coordinates {
+    ...CoordinatesFragment
+  }
+  isExactLocationSearch
+  regionId
+  searchTerm
+}
+
+fragment CoordinatesFragment on Coordinates {
+  latitude
+  longitude
+}
+
+fragment TripsSaveStayAttributesFragment on TripsSaveStayAttributes {
+  __typename
+  checkInDate {
+    ...DateFragment
+  }
+  checkoutDate {
+    ...DateFragment
+  }
+  regionId
+  roomConfiguration {
+    numberOfAdults
+    childAges
+  }
+}
+
+fragment DateFragment on Date {
+  day
+  month
+  year
+}
+
+fragment TripsSaveActivityAttributesFragment on TripsSaveActivityAttributes {
+  __typename
+  regionId
+  dateRange {
+    start {
+      ...DateFragment
+    }
+    end {
+      ...DateFragment
+    }
+  }
+}
+
+fragment TripsSaveFlightSearchAttributesFragment on TripsSaveFlightSearchAttributes {
+  __typename
+  searchCriteria {
+    primary {
+      journeyCriterias {
+        arrivalDate {
+          ...DateFragment
+        }
+        departureDate {
+          ...DateFragment
+        }
+        destination
+        destinationAirportLocationType
+        origin
+        originAirportLocationType
+      }
+      searchPreferences {
+        advancedFilters
+        airline
+        cabinClass
+      }
+      travelers {
+        age
+        type
+      }
+      tripType
+    }
+    secondary {
+      booleans {
+        id
+        value
+      }
+      counts {
+        id
+        value
+      }
+      dates {
+        id
+        value {
+          ...DateFragment
+        }
+      }
+      ranges {
+        id
+        min
+        max
+      }
+      selections {
+        id
+        value
+      }
+    }
+  }
+}
+
+fragment TripsSaveItemPropertiesFragment on TripsSaveItemProperties {
+  accessibility
+  analytics {
+    referrerId
+    linkName
+    uisPrimeMessages {
+      messageContent
+      schemaName
+    }
+  }
+  adaptexSuccessCampaignIds {
+    ...AdaptexCampaignTrackingDetailFragment
+  }
+  label
+}
+
+fragment AdaptexCampaignTrackingDetailFragment on AdaptexCampaignTrackingDetail {
+  campaignId
+  eventTarget
+}
+
+fragment SingleSelectionFragment on ShoppingSelectionField {
+  primary
+  secondary
+  options {
+    ...FilterOption
+  }
+  expando {
+    ...Expando
+  }
+}
+
+fragment FilterOption on ShoppingSelectableFilterOption {
+  id
+  value
+  primary
+  secondary
+  description
+  accessibility
+  selected
+  disabled
+  icon {
+    ...icon
+  }
+  analytics {
+    ...clientSideAnalytics
+  }
+}
+
+fragment clientSideAnalytics on ClientSideAnalytics {
+  linkName
+  referrerId
+}
+
+fragment Expando on ShoppingSelectionExpando {
+  expandLabel
+  collapseLabel
+  visible
+  threshold
+  minimalHeight
+  analytics {
+    ...clientSideAnalytics
+  }
+}
+
+fragment MultiSelectionFragment on ShoppingMultiSelectionField {
+  primary
+  primaryIcon {
+    ...icon
+  }
+  secondary
+  options {
+    ...FilterOption
+  }
+  expando {
+    ...Expando
+  }
+}
+
+fragment searchUserFeedback on UserFeedback {
+  userSurveyTitle
+  options {
+    inputHeading
+    inputTextPlaceholder
+    option {
+      ...carActionableItem
+    }
+  }
+  submitConfirmation
+  submit {
+    ...carActionableItem
+  }
+}
+
+fragment coordinates on Coordinates {
+  latitude
+  longitude
+}
