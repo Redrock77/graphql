@@ -1,4 +1,3 @@
-[{
 query CarSearchV3(
   $context: ContextInput!,
   $primaryCarSearchCriteria: PrimaryCarCriteriaInput!,
@@ -1261,4 +1260,3 @@ fragment coordinates on Coordinates {
   latitude
   longitude
 }
-}]
