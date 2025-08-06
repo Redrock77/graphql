@@ -1,13 +1,13 @@
 [{
-  "query": "query CarDetail($context: ContextInput!, $carDetailContext: CarDetailContextInput!) { carDetail(context: $context, carDetailContext: $carDetailContext) { carOfferToken vehicle { category description attributes { icon { id description } text } } vendor { image { url description } } priceSummary { lead { price { formatted currencyInfo { symbol } } qualifier } total { price { formatted currencyInfo { symbol } } qualifier } } } }",
+  "query": "query CarDetail($context: ContextInput!, $carDetailContext: CarDetailContextInput!) { carDetail(context: $context, carDetailContext: $carDetailContext) { carOfferToken } }",
   "variables": {
     "context": {
-      "siteId": "PLACEHOLDER_SITE_ID",
-      "locale": "PLACEHOLDER_LOCALE",
+      "siteId": 1,
+      "locale": "en_US",
       "eapid": 0,
       "tpid": 1,
-      "currency": "PLACEHOLDER_CURRENCY",
-      "device": { "type": "PLACEHOLDER_DEVICE_TYPE" },
+      "currency": "USD",
+      "device": { "type": "DESKTOP" },
       "identity": {
         "duaid": "00000000-0000-0000-0000-000000000000",
         "authState": "ANONYMOUS"
@@ -17,12 +17,12 @@
     },
     "carDetailContext": {
       "carOfferToken": "PLACEHOLDER_CAR_OFFER_TOKEN",
-      "rewardPointsSelection": "PLACEHOLDER_REWARD_POINTS",
+      "rewardPointsSelection": "DO_NOT_APPLY_REWARD_POINTS",
       "selectedAccessories": [],
-      "continuationContextualId": "PLACEHOLDER_CONTEXT_ID",
+      "continuationContextualId": "testContextId",
       "optionToken": null,
       "optionAction": null,
-      "originalDeeplink": "PLACEHOLDER_DEEPLINK"
+      "originalDeeplink": "deeplinkTest"
     }
   },
   "operationName": "CarDetail"
